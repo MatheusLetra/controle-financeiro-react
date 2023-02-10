@@ -1,5 +1,5 @@
 {
-  "homepage": "https://matheusletra.github.io/controle-financeiro-react",  
+  "homepage": "https://matheusletra.github.io/controle-financeiro-react",
   "name": "controlefinanceiro",
   "version": "0.1.0",
   "private": true,
@@ -12,6 +12,7 @@
     "react-icons": "^4.7.1",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
+    "sweetalert2": "^11.7.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

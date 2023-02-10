@@ -1,12 +1,34 @@
 import React from 'react'
+
+import Swal from 'sweetalert2'
+
 import GridItem from '../GridItem'
 import * as Components from './styles'
 
 const Grid = ({ itens, setItens }) => {
   const onDelete = (ID) => {
-    const newArray = itens.filter((transaction) => transaction.id !== ID)
-    setItens(newArray)
-    localStorage.setItem('transactions-controle-financeiro', JSON.stringify(newArray))
+    Swal.fire({
+      title: 'Deseja realmente excluir o item?',
+      showCancelButton: true,
+      confirmButtonText: 'Excluir',
+      confirmButtonColor: 'red',
+      showLoaderOnConfirm: true,
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const newArray = itens.filter((transaction) => transaction.id !== ID)
+        setItens(newArray)
+        localStorage.setItem('transactions-controle-financeiro', JSON.stringify(newArray))
+
+        Swal.fire({
+          title: 'Sucesso',
+          text: 'Valor excluído com sucesso!',
+          icon: 'success',
+          confirmButtonText: 'OK',
+          confirmButtonColor: 'teal',
+        })
+      }
+    })
   }
 
   return (

@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+
+import Swal from 'sweetalert2'
+
 import Grid from '../Grid'
 
 import * as Components from './styles'
@@ -12,10 +15,22 @@ const Form = ({ handleAdd, transactionsList, setTransactionsList }) => {
 
   const handleSave = () => {
     if (!desc || !amount) {
-      alert('Informe a descrição e o valor!')
+      Swal.fire({
+        title: 'Erro',
+        text: 'Informe a descrição e o valor!',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: 'teal',
+      })
       return
     } else if (amount < 0) {
-      alert('Informe um valor positivo!')
+      Swal.fire({
+        title: 'Erro',
+        text: 'Informe um valor positivo!',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: 'teal'
+      })
       return
     }
 
@@ -30,6 +45,14 @@ const Form = ({ handleAdd, transactionsList, setTransactionsList }) => {
 
     setDesc('')
     setAmount('')
+
+    Swal.fire({
+      title: 'Sucesso',
+      text: 'Valor registrado com sucesso!',
+      icon: 'success',
+      confirmButtonText: 'OK',
+      confirmButtonColor: 'teal',
+    })
   }
 
 
@@ -54,7 +77,7 @@ const Form = ({ handleAdd, transactionsList, setTransactionsList }) => {
         </Components.RadioGroup>
         <Components.Button onClick={handleSave}>ADICIONAR</Components.Button>
       </Components.Container>
-      <Grid itens={transactionsList} setItens={setTransactionsList}/>
+      <Grid itens={transactionsList} setItens={setTransactionsList} />
     </>
   )
 }
