@@ -10,7 +10,7 @@ const GridItem = ({ item, onDelete }) => {
   return (
     <Components.Tr>
       <Components.Td>{item.desc}</Components.Td>
-      <Components.Td>{item.amount}</Components.Td>
+      <Components.Td>{`R$ ${Number(item.amount).toFixed(2)}`}</Components.Td>
       <Components.Td alignCenter>
         {item.expense ? (
           <FaRegArrowAltCircleDown color='red' />
